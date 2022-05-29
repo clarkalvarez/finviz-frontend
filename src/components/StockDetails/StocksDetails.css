@@ -21,15 +21,3 @@
   padding-right: 0;
   padding-left: 0;
 }
-
-.icon {
-  background-color: transparent;
-  color: #3b5998;
-  height: 60px;
-  cursor: pointer;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  margin-bottom: 40px;
-  margin-right: 40px;
-}

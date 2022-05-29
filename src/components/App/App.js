@@ -1,147 +1,52 @@
+import StockInfo from "../StockInfo/StockInfo";
+import StocksDetails from "../StockDetails/StocksDetails";
+import { Route, BrowserRouter, Routes } from "react-router-dom";
 import "./App.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import StockModal from "../StockModal/StockModal.js";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      show: false,
+    };
+    this.showModal = this.showModal.bind(this);
+    this.hideModal = this.hideModal.bind(this);
+  }
 
-function App() {
-  return (
-    <div className="container">
-      <div className="row row-cols-3">
-        <div className="col">
-          <div className="card border-dark mb-3" style={{ width: "20rem" }}>
-            <div className="card-header">TSLA </div>
-            <div className="card-body">
-              <img
-                className="card-img-top mb-3"
-                src="https://imageio.forbes.com/specials-images/imageserve/5f1f37a40a5db2c8275972c0/-Photo-by-JOHN-THYS-AFP-via-Getty-Images-/960x0.jpg?format=jpg&width=960"
-                alt="Card image cap"
-              />
+  showModal = () => {
+    this.setState({ show: true });
+    console.log(this.props);
+  };
 
-              <ul className="list-group list-group-flush">
-                <li className="list-group-item">
-                  <div className="column info">
-                    <label className="text-left">Price</label>
-                    <label className="text-right">$45</label>
-                  </div>
-                </li>
-                <li className="list-group-item">
-                  <div className="column info">
-                    <label className="text-left">Change</label>
-                    <label className="text-right">%156</label>
-                  </div>
-                </li>
-                <li className="list-group-item">
-                  <div className="column info">
-                    <label className="text-left">Market Cap</label>
-                    <label className="text-right">$344,343</label>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
+  hideModal = () => {
+    this.setState({ show: false });
+    console.log(this.props);
+  };
+
+  render() {
+    return (
+      <div>
+        <StockModal show={this.state.show} handleClose={this.hideModal} />
+        <div>
+          <FontAwesomeIcon
+            className="icon"
+            icon={faPlusCircle}
+            onClick={this.showModal}
+          />
         </div>
-
-        <div className="col">
-          <div className="card border-dark mb-3" style={{ width: "20rem" }}>
-            <div className="card-header">TSLA </div>
-            <div className="card-body">
-              <img
-                className="card-img-top mb-3"
-                src="https://imageio.forbes.com/specials-images/imageserve/5f1f37a40a5db2c8275972c0/-Photo-by-JOHN-THYS-AFP-via-Getty-Images-/960x0.jpg?format=jpg&width=960"
-                alt="Card image cap"
-              />
-
-              <ul className="list-group list-group-flush">
-                <li className="list-group-item">
-                  <div className="column info">
-                    <label className="text-left">Price</label>
-                    <label className="text-right">$45</label>
-                  </div>
-                </li>
-                <li className="list-group-item">
-                  <div className="column info">
-                    <label className="text-left">Change</label>
-                    <label className="text-right">%156</label>
-                  </div>
-                </li>
-                <li className="list-group-item">
-                  <div className="column info">
-                    <label className="text-left">Market Cap</label>
-                    <label className="text-right">$344,343</label>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div className="col">
-          <div className="card border-dark mb-3" style={{ width: "20rem" }}>
-            <div className="card-header">TSLA </div>
-            <div className="card-body">
-              <img
-                className="card-img-top mb-3"
-                src="https://imageio.forbes.com/specials-images/imageserve/5f1f37a40a5db2c8275972c0/-Photo-by-JOHN-THYS-AFP-via-Getty-Images-/960x0.jpg?format=jpg&width=960"
-                alt="Card image cap"
-              />
-
-              <ul className="list-group list-group-flush">
-                <li className="list-group-item">
-                  <div className="column info">
-                    <label className="text-left">Price</label>
-                    <label className="text-right">$45</label>
-                  </div>
-                </li>
-                <li className="list-group-item">
-                  <div className="column info">
-                    <label className="text-left">Change</label>
-                    <label className="text-right">%156</label>
-                  </div>
-                </li>
-                <li className="list-group-item">
-                  <div className="column info">
-                    <label className="text-left">Market Cap</label>
-                    <label className="text-right">$344,343</label>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div className="col">
-          <div className="card border-dark mb-5" style={{ width: "20rem" }}>
-            <div className="card-header">TSLA </div>
-            <div className="card-body">
-              <img
-                className="card-img-top mb-3"
-                src="https://imageio.forbes.com/specials-images/imageserve/5f1f37a40a5db2c8275972c0/-Photo-by-JOHN-THYS-AFP-via-Getty-Images-/960x0.jpg?format=jpg&width=960"
-                alt="Card image cap"
-              />
-
-              <ul className="list-group list-group-flush">
-                <li className="list-group-item">
-                  <div className="column info">
-                    <label className="text-left">Price</label>
-                    <label className="text-right">$45</label>
-                  </div>
-                </li>
-                <li className="list-group-item">
-                  <div className="column info">
-                    <label className="text-left">Change</label>
-                    <label className="text-right">%156</label>
-                  </div>
-                </li>
-                <li className="list-group-item">
-                  <div className="column info">
-                    <label className="text-left">Market Cap</label>
-                    <label className="text-right">$344,343</label>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <BrowserRouter>
+          <Routes>
+            <Route exact path="/" element={<StocksDetails />} />
+            <Route path="/:stockcode" element={<StockInfo />} />
+          </Routes>
+        </BrowserRouter>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
